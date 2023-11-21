@@ -1,16 +1,11 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| OWSA-INV V2
+| Infomax Inventory Management System V2
 |--------------------------------------------------------------------------
-| Author: Siamon Hasan
-| Project Name: OSWA-INV
+| Author: Mark Feliciano
+| Project Name: Infomax
 | Version: v2
-| Offcial page: http://oswapp.com/
-| facebook Page: https://www.facebook.com/oswapp
-|
-|
-|
 */
   define( 'DB_HOST', 'localhost' );          // Set database host
   define( 'DB_USER', 'root' );             // Set database user

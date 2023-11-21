@@ -98,7 +98,7 @@ function tableExists($table){
   }
   /*--------------------------------------------------------------*/
   /* Login with the data provided in $_POST,
-  /* coming from the login_v3.php form.
+  /* coming from the login_v2.php form.
   /* If you used this method then remove authenticate function.
  /*--------------------------------------------------------------*/
    function authenticate_v2($username='', $password='') {

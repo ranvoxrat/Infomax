@@ -12,7 +12,7 @@ if(empty($errors)){
      $session->login($user_id);
     //Update Sign in time
      updateLastLogIn($user_id);
-     $session->msg("s", "Welcome to Inventory Management System");
+     $session->msg("s", "Welcome to Infomax Inventory Management System");
      redirect('admin.php',false);
 
   } else {

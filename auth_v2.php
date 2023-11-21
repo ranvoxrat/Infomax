@@ -38,6 +38,6 @@ if (empty($errors)) {
 } else {
     // Validation errors occurred
     $session->msg("d", $errors);
-    redirect('login_v3.php', false);
+    redirect('login_v2.php', false);
 }
 ?>
