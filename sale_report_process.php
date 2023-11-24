@@ -10,15 +10,14 @@ $results = '';
     $req_dates = array('start-date','end-date');
     validate_fields($req_dates);
 
-    if(empty($errors)):
+    if(empty($errors)){
       $start_date   = remove_junk($db->escape($_POST['start-date']));
       $end_date     = remove_junk($db->escape($_POST['end-date']));
       $results      = find_sale_by_dates($start_date,$end_date);
-    else:
+    }else{
       $session->msg("d", $errors);
       redirect('sales_report.php', false);
-    endif;
-
+    }
   } else {
     $session->msg("d", "Select dates");
     redirect('sales_report.php', false);
@@ -31,6 +30,11 @@ $results = '';
    <title>Default Page Title</title>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
    <style>
+    *{
+      padding:0;
+      margin:0;
+      box-sizing: border-box;
+    }
    @media print {
      html,body{
         font-size: 9.5pt;
@@ -43,7 +47,7 @@ $results = '';
       }
     }
     .page-break{
-      width: 980px;
+      width: 60%;
       margin: 0 auto;
     }
      .sale-head{
@@ -53,6 +57,7 @@ $results = '';
        padding: 10px 20px;
        display: block;
      }.sale-head h1{
+      width: auto;
        margin: 0;
        border-bottom: 1px solid #212121;
      }.table>thead:first-child>tr:first-child>th{
@@ -73,9 +78,32 @@ $results = '';
        text-transform: uppercase;
        font-weight: 500;
      }
+     .flex-btn{
+      width: 100%;
+      padding: 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      align-content: flex-end;
+     }
+     .btn-back{
+      position: relative;
+      display: block;
+      border: none;
+      background-color: #0DBAC2;
+      width: 15%;
+      height: 20%;
+      padding: 5px;
+     }
+     .btn-back>a{
+      text-decoration: none;
+      color:white;
+     }
    </style>
 </head>
-<body>
+<body class="flex-btn">
   <?php if($results): ?>
     <div class="page-break">
        <div class="sale-head">
@@ -122,6 +150,9 @@ $results = '';
          </tr>
         </tfoot>
       </table>
+      <div>
+    <button class="btn-back btn-primary "><a href="sales_report.php">back</a></button>
+  </div>
     </div>
   <?php
     else:
@@ -129,6 +160,7 @@ $results = '';
         redirect('sales_report.php', false);
      endif;
   ?>
+  
 </body>
 </html>
 <?php if(isset($db)) { $db->db_disconnect(); } ?>

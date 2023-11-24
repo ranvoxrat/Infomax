@@ -41,7 +41,7 @@
 <div class="row">
   <div class="col-md-6">
     <?php echo display_msg($msg); ?>
-    <form method="post" action="ajax.php" autocomplete="off" id="sug-form">
+    <form method="post" action="add_sale.php" autocomplete="off" id="sug-form">
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-btn">
@@ -55,33 +55,93 @@
   </div>
 </div>
 <div class="row">
-
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-          <span>Sale Eidt</span>
-       </strong>
+          <span>Add Multiple Sales</span>
+        </strong>
       </div>
       <div class="panel-body">
         <form method="post" action="add_sale.php">
-         <table class="table table-bordered">
-           <thead>
-            <th> Item </th>
-            <th> Price </th>
-            <th> Qty </th>
-            <th> Total </th>
-            <th> Date</th>
-            <th> Action</th>
-           </thead>
-             <tbody  id="product_info"> </tbody>
-         </table>
-       </form>
+          <table class="table table-bordered">
+            <thead>
+              <th> Item </th>
+              <th> Price </th>
+              <th> Qty </th>
+              <th> Total </th>
+              <th> Date</th>
+              <th> Action</th>
+            </thead>
+              <tbody id="product_info"></tbody>
+          </table>
+        </form>
       </div>
     </div>
   </div>
-
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#sug-form").submit(function(e){
+      $(document).ready(function(){
+  $("#sug-form").submit(function(e){
+    e.preventDefault();
+    var productName = $("#sug_input").val();
+    $.ajax({
+      type: "POST",
+      url: "search_products.php", 
+      data: { title: productName },
+      dataType: "json",
+      success: function(response){
+           displaySearchResults(response);
+      },
+      error: function(xhr, status, error){
+        console.error("Error: " + error);
+      }
+    });
+  });
+});
+
+function displaySearchResults(products) {
+  $("#result").empty();
+
+  products.forEach(function(product) {
+    var productItem = '<a href="#" class="list-group-item" data-info=\'{"id":"' + product.id + '","name":"' + product.name + '"}\'>'
+                      + product.name + '</a>';
+    $("#result").append(productItem);
+  });
+}
+
+    });
+
+    function displaySearchResults(products) {
+      $("#result").empty();
+
+      products.forEach(function(product) {
+        var productItem = '<a href="#" class="list-group-item" data-info=\'{"id":"' + product.id + '","name":"' + product.name + '"}\'>'
+                          + product.name + '</a>';
+        $("#result").append(productItem);
+      });
+    }
+
+    $("#result").on('click', 'a', function(){
+      var productData = $(this).data('info');
+      var newRow = '<tr>' +
+                    '<td><input type="hidden" name="s_id[]" value="' + productData.id + '">' + productData.name + '</td>' +
+                    '<td><input type="text" name="price[]" class="form-control" placeholder="Price"></td>' +
+                    '<td><input type="text" name="quantity[]" class="form-control" placeholder="Quantity"></td>' +
+                    '<td><input type="text" name="total[]" class="form-control" placeholder="Total"></td>' +
+                    '<td><input type="text" name="date[]" class="form-control" placeholder="Date"></td>' +
+                    '<td></td>' +
+                  '</tr>';
+     
+        $("#product_info").append(newRow);
+     
+    });
+  });
+</script>
 
 <?php include_once('layouts/footer.php'); ?>

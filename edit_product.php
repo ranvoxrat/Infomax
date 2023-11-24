@@ -65,7 +65,7 @@ if(!$product){
          </strong>
         </div>
         <div class="panel-body">
-         <div class="col-md-7">
+         <div class="col-lg-12">
            <form method="post" action="edit_product.php?id=<?php echo (int)$product['id'] ?>">
               <div class="form-group">
                 <div class="input-group">

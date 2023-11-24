@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 --
 -- Dumping data for table `categories`
---
+--  
 -- --------------------------------------------------------
 
 --
@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `media` (
 
 CREATE TABLE IF NOT EXISTS `products` (
 `id` int(11) unsigned NOT NULL,
+  `product_code` varchar(150) NOT NULL,
   `name` varchar(255) NOT NULL,
   `quantity` varchar(50) DEFAULT NULL,
   `buy_price` decimal(25,2) DEFAULT NULL,

@@ -2,7 +2,7 @@
   $page_title = 'Admin Home Page';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
-   page_require_level(1);
+  //  page_require_level(1);
 ?>
 <?php
  $c_categorie     = count_by_id('categories');
@@ -69,7 +69,7 @@
          <div class="panel-icon pull-left bg-green">
           <i class="glyphicon glyphicon-usd"></i>
         </div>
-        <div class="p pull-right">
+        <div class="panel-value pull-right">
           <h2 class="margin-top"> <?php  echo $c_sale['total']; ?></h2>
           <p class="text-muted">Sales</p>
         </div>
@@ -79,7 +79,7 @@
 </div>
   
   <div class="row">
-   <div class="col-md-4">
+   <div class="col-md-3">
      <div class="panel panel-default">
        <div class="panel-heading">
          <strong>
@@ -146,7 +146,7 @@
     </div>
    </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <div class="panel panel-default">
       <div class="panel-heading">
         <strong>

@@ -11,6 +11,7 @@
    $req_fields = array('product-title','product-categorie','product-quantity','buying-price', 'saleing-price' );
    validate_fields($req_fields);
    if(empty($errors)){
+     $p_code  = remove_junk($db->escape($_POST['product-code']));
      $p_name  = remove_junk($db->escape($_POST['product-title']));
      $p_cat   = remove_junk($db->escape($_POST['product-categorie']));
      $p_qty   = remove_junk($db->escape($_POST['product-quantity']));
@@ -23,9 +24,9 @@
      }
      $date    = make_date();
      $query  = "INSERT INTO products (";
-     $query .=" name,quantity,buy_price,sale_price,categorie_id,media_id,date";
+     $query .="product_code, name,quantity,buy_price,sale_price,categorie_id,media_id,date";
      $query .=") VALUES (";
-     $query .=" '{$p_name}', '{$p_qty}', '{$p_buy}', '{$p_sale}', '{$p_cat}', '{$media_id}', '{$date}'";
+     $query .="'{$p_code}', '{$p_name}', '{$p_qty}', '{$p_buy}', '{$p_sale}', '{$p_cat}', '{$media_id}', '{$date}'";
      $query .=")";
      $query .=" ON DUPLICATE KEY UPDATE name='{$p_name}'";
      if($db->query($query)){
@@ -53,7 +54,7 @@
   <div class="row">
   <div class="col-lg-12">
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading bg-primary">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
             <span>Add New Product</span>
@@ -63,12 +64,12 @@
          <div class="col-md-12">
           <form method="post" action="add_product.php" class="clearfix">
               <?php
-              $prodcode = 'PR' . date('YmdHis');
+                 $prodcode = 'PR' . date('YmdHis');
               ?>
            <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">
-                  <i class="glyphicon glyphicon-codepen"></i>
+                  <i class="glyphicon glyphicon-tags"></i>
                   </span>
                   <input type="text" class="form-control" name="product-code" placeholder="Product Code" value="<?php echo $prodcode; ?>" readonly>
                </div>

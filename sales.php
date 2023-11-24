@@ -16,7 +16,7 @@ $sales = find_all_sale();
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading clearfix">
+        <!-- <div class="panel-heading clearfix">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
             <span>All Sales</span>
@@ -24,10 +24,10 @@ $sales = find_all_sale();
           <div class="pull-right">
             <a href="add_sale.php" class="btn btn-primary">Add sale</a>
           </div>
-        </div>
+        </div> -->
         <div class="panel-body">
-          <table class="table table-bordered table-striped">
-            <thead>
+          <table class="table display">
+            <thead class="bg-primary text-white ">
               <tr>
                 <th class="text-center" style="width: 50px;">#</th>
                 <th> Product name </th>

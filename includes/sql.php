@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
   require_once('includes/load.php');
 
 /*--------------------------------------------------------------*/
@@ -208,7 +211,7 @@ function tableExists($table){
    /*--------------------------------------------------------------*/
   function join_product_table(){
      global $db;
-     $sql  =" SELECT p.id,p.name,p.quantity,p.buy_price,p.sale_price,p.media_id,p.date,c.name";
+     $sql  =" SELECT p.id,p.product_code,p.name,p.quantity,p.buy_price,p.sale_price,p.media_id,p.date,c.name";
     $sql  .=" AS categorie,m.file_name AS image";
     $sql  .=" FROM products p";
     $sql  .=" LEFT JOIN categories c ON c.id = p.categorie_id";

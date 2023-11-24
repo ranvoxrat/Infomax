@@ -3,20 +3,23 @@
   <html lang="en">
     <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php if (!empty($page_title))
            echo remove_junk($page_title);
             elseif(!empty($user))
            echo ucfirst($user['name']);
             else echo "Inventory Management System";?>
     </title>
-    <!-- Include jQuery -->
+  <!-- Include jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<!-- Include DataTables CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 
-<!-- Include DataTables JS -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<!-- DataTables JavaScript -->
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
